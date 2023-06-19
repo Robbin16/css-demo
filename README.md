@@ -1,1 +1,4 @@
-# css-demo
+- padding 不能为负 margin 可以为负
+- background 一直延伸到 border, 可以将 border 变透明看到 background
+- 父子 div 如果给子 div 增加 margin-top 会出现 margin 传递效果 margin-top 增加到父 div 之上(1.解决可以用 padding-top 2.解决可以给父 div 增加透明 border 3.触发 bfc 4.使用现代布局 flex grid)
+- 兄弟 div 上 div 增加 margin-bottom 下 div 增加 margin-top 真实效果 margin 只会取两者中最大值(1.只给上 div 或者下 div 加 margin 2.触发 bfc 3.使用现代布局 flex grid)
