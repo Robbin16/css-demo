@@ -4,3 +4,8 @@
 - 兄弟 div 上 div 增加 margin-bottom 下 div 增加 margin-top 真实效果 margin 只会取两者中最大值(1.只给上 div 或者下 div 加 margin 2.触发 bfc 3.使用现代布局 flex grid)
 - 块元素 1.独占一行 2.全样式支持 3.所占区域是一个矩形 4.不写宽度会填满父容器等同于父容器宽度
 - 内联元素 1.与其他内联元素并列一行 2.width height 不支持 margin padding 上下支持的不好 3.宽度由内容撑开 没内容就没宽度 4.内联元素与内联元素会有空隙是换行符造成的可以用(font-size 为 0)解决
+- 自适应盒模型外层 div width 给 300 内层 div width 给 300 padding 给 10 border 给 10 margin 给 10 内层 div 宽度会溢出 正确的做法是 内层 div 不给宽度 margin 给 10 padding 给 10 border 给 10 会重新计算内层 div 的 content 宽度 内层 div 宽度不会溢出
+- 标准盒模型和怪异盒模型 box-sizing 设置为 content-box 标准盒模型 width height 设置 content 设置为 border-box 怪异盒模型 content+ padding + border = width
+- float 设置的 div 将脱离文档流(从上往下从左往右) 浮动元素将上一个块级元素或父容器或上一个浮动元素作为边界 内联元素或块级内联元素不能作为边界 浮动本质在层级上高于文档流内的元素
+- 清除浮动 clear 是将原本高于层级的浮动元素拽下来跟文档流内的元素处于同一个层级 浮动元素在上一个 clear 加在下一个元素上 clear:left 但如果浮动元素在下一个 给上一个元素加 clear:right 是没有效果的 1.空标签加 clear:both 2.增加空标签会有很多无效的 dom 因此给父容器增加::after{content:"",display:block,clear:both} clear 只能设置给块级元素 after 伪类默认为内联元素 3.触发 bfc
+- 浮动只会影响后面元素的布局 浮动即有内联元素的特性即不写宽度宽度由内容决定 又有块级元素的特性 width height padding margin 等 上一个浮动元素无法阻挡下一个 div 元素里的文本 浮动元素多的时候当宽度不够会自动换行
